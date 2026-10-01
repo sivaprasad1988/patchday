@@ -1,0 +1,15 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Patchday – Einstellungen</title>
+<style>body{font:14px system-ui,sans-serif;max-width:900px;margin:24px auto;padding:0 16px}h1{font-size:20px}label{display:block;margin:14px 0 4px;font-weight:600}input[type=text],input[type=url]{width:100%;box-sizing:border-box;padding:6px}table{width:100%;border-collapse:collapse;margin-top:6px}td,th{border-bottom:1px solid #ddd;padding:4px;text-align:left}th{font-size:12px;color:#555}td input{width:100%;box-sizing:border-box;padding:5px}button{padding:6px 12px;margin-top:10px;cursor:pointer}.del{margin:0;padding:4px 8px}#msg{color:green;margin-left:10px}small{color:#666}</style>
+</head><body>
+<h1>Patchday – Einstellungen</h1>
+<label for="names">Ausführung – Name(n), mit Komma getrennt</label>
+<input type="text" id="names" placeholder="Siva, Anu BN">
+<small>Wird verwendet, wenn beim Start kein Name eingegeben wird. Verteilung ausgeglichen: wer im Protokoll seltener steht, kommt zuerst.</small>
+<label><input type="checkbox" id="askTime"> Uhrzeit für vergangene Daten abfragen (sonst immer automatisch)</label>
+<label>Zuordnung T3Monitor → OpenProject</label>
+<small>Website = Überschrift auf der T3Monitor-Seite, UID = <code>showUid</code> aus der T3Monitor-URL (optional, hat Vorrang).</small>
+<table><thead><tr><th style="width:26%">Website (T3Monitor)</th><th style="width:10%">UID</th><th>OpenProject-Link (Patchday Protokoll)</th><th></th></tr></thead><tbody id="map"></tbody></table>
+<button id="addRow">+ Zeile</button>
+<div><button id="save">Speichern</button><span id="msg"></span></div>
+<script src="options.js"></script>
+</body></html>
