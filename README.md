@@ -1,4 +1,4 @@
-**Patchday Extension – README - Gingco Communication - Version: 1.2 - 10 2026**
+**Patchday Extension – README - Gingco Communication - Version: 1.3 - 10 2026**
 
 ---
 
@@ -32,6 +32,20 @@ If a website has no mapping yet, the extension asks once for the link and saves 
 4. Optional: time prompt for past dates (see settings).
 5. Check the summary → **OK** saves the protocol.
 
+## Run all (Alle ausführen)
+
+Right-click the extension icon → **Alle ausführen**.
+
+1. A progress page opens (progress bar, status per website). The icon badge shows `3/12`.
+2. **Who is executing?** is asked once for the whole run.
+3. For each mapping, one after another in a work tab: open T3Monitor → read → open OpenProject → insert.
+4. Every step is confirmed as usual (warning, time, "Keine Updates gefunden", **Speichern?**). Each dialog starts with `[3/12]`. *Cancel* = skip this website.
+5. **Stopp** on the progress page ends the run after the current website.
+
+- Needs a UID for each mapping: the number or the full T3Monitor link (`…&showUid=33`) in the UID field.
+- Log in to T3Monitor and OpenProject first. Websites that are not logged in are marked as errors.
+- The run stops by itself if content may be unsaved (save not confirmed, no Save button). The work tab stays open so you can check.
+
 ## Rules
 
 ### No duplicates, nothing skipped
@@ -42,7 +56,7 @@ If a website has no mapping yet, the extension asks once for the link and saves 
 - Updates listed more than once in T3Monitor are added only once.
 - Date formats `01.09.2026`, `1.9.2026` and `2026-09-01` are recognised.
 - The table with the "Datum" column is used. If none exists, it is created.
-- Running again with the same data changes nothing ("Keine neuen Einträge").
+- Nothing new (T3Monitor history empty or everything already in the protocol) → asks for consent, then adds a row for today with "Keine Updates gefunden". No prompt if a row for today already exists. If updates show up later that day, they are added to that row.
 
 ### Executor (names)
 
@@ -74,7 +88,9 @@ If a website has no mapping yet, the extension asks once for the link and saves 
 | File | Purpose |
 |---|---|
 | `manifest.json` | Extension configuration (Manifest V3, permissions) |
-| `background.js` | Logic: read T3Monitor, open and fill OpenProject |
+| `background.js` | Click handling, hand-over T3Monitor → OpenProject, context menu |
+| `shared.js` | Shared logic: read T3Monitor (`readT3M`), fill OpenProject (`writeOP`), mapping helpers |
+| `batch.html` / `batch.js` | "Alle ausführen": progress page and run control |
 | `options.html` / `options.js` | Settings page |
 
 ## Troubleshooting
@@ -92,6 +108,7 @@ If a website has no mapping yet, the extension asks once for the link and saves 
 
 | Version | Changes |
 |---|---|
+| 1.3 | "Keine Updates gefunden" row (with consent) when there is nothing new; "Alle ausführen" with progress page; UID field accepts the full T3Monitor link |
 | 1.2 | "Who is executing?" prompt, even name distribution, README |
 | 1.1 | One-click workflow, settings page, mapping, multiple names, fix for `chrome://` error |
 | 1.0.x | Duplicate protection, adding missing updates, smart time |
