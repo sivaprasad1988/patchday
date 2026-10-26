@@ -1,4 +1,4 @@
-**Patchday Extension – README - Gingco Communication - Version: 1.3 - 10 2026**
+**Patchday Extension – README - Gingco Communication - Version: 1.4 - 10 2026**
 
 ---
 
@@ -24,11 +24,20 @@ Right-click the extension icon → **Options**.
 
 If a website has no mapping yet, the extension asks once for the link and saves it to the settings automatically.
 
+**CSV export / import:** *CSV exportieren* downloads all settings (names, time option, mapping) as `patchday-einstellungen-YYYY-MM-DD.csv` (semicolon-separated, UTF-8, opens in Excel). *CSV importieren* replaces the form contents with the file; click **Speichern** to store them. Format:
+
+```
+Typ;Website/Wert;UID;OpenProject-Link
+Ausführung;Siva, Anu BN;;
+Uhrzeit abfragen;ja;;
+Zuordnung;Example website;33;https://op.hub.gingco.de/...
+```
+
 ## Workflow (one click)
 
 1. Open the website's page in T3Monitor (with update history) and click the extension icon.
 2. **Who is executing?** – enter name(s) or leave empty (= names from the settings). *Cancel* stops the run.
-3. The extension opens the mapped OpenProject protocol in edit mode, waits for the editor and inserts the data.
+3. The extension opens the mapped OpenProject protocol in edit mode in a new window, waits for the editor and inserts the data.
 4. Optional: time prompt for past dates (see settings).
 5. Check the summary → **OK** saves the protocol.
 
@@ -108,6 +117,7 @@ Right-click the extension icon → **Alle ausführen**.
 
 | Version | Changes |
 |---|---|
+| 1.4 | OpenProject opens in a new window (T3Monitor tab stays open); CSV export/import of settings |
 | 1.3 | "Keine Updates gefunden" row (with consent) when there is nothing new; "Alle ausführen" with progress page; UID field accepts the full T3Monitor link |
 | 1.2 | "Who is executing?" prompt, even name distribution, README |
 | 1.1 | One-click workflow, settings page, mapping, multiple names, fix for `chrome://` error |

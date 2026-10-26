@@ -1,4 +1,4 @@
-// Patchday 1.3 – Ein Klick auf T3Monitor: Daten lesen -> OpenProject öffnen -> automatisch eintragen.
+// Patchday 1.4 – Ein Klick auf T3Monitor: Daten lesen -> OpenProject öffnen -> automatisch eintragen.
 importScripts('shared.js'); // T3M, OP, getCfg, uidOf, opEditUrl, readT3M, writeOP
 const LS = chrome.storage.local, SS = chrome.storage.session;
 const run = (tabId, func, args = [], world = 'ISOLATED') =>
