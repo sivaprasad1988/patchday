@@ -45,8 +45,11 @@ chrome.action.onClicked.addListener(async (tab) => {
   const names = who.split(',').map(x => x.trim()).filter(Boolean);
   if (names.length) cfg.names = names;
   const url = opEditUrl(op);
-  await SS.set({ [PK(tab.id)]: { data: d, cfg: { names: cfg.names, askTime: cfg.askTime }, url, ts: Date.now() } });
-  chrome.tabs.update(tab.id, { url });
+  // OpenProject in neuem Fenster öffnen; Daten vor dem Laden ablegen, damit der Auto-Start sie sicher findet
+  const win = await chrome.windows.create({ url: 'about:blank', focused: true });
+  const nt = win.tabs[0].id;
+  await SS.set({ [PK(nt)]: { data: d, cfg: { names: cfg.names, askTime: cfg.askTime }, url, ts: Date.now() } });
+  chrome.tabs.update(nt, { url });
 });
 
 // Sobald die OpenProject-Bearbeitungsseite geladen ist: automatisch eintragen (genau einmal).
