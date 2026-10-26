@@ -37,7 +37,7 @@ Zuordnung;Example website;33;https://op.hub.gingco.de/...
 
 1. Open the website's page in T3Monitor (with update history) and click the extension icon.
 2. **Who is executing?** – enter name(s) or leave empty (= names from the settings). *Cancel* stops the run.
-3. The extension opens the mapped OpenProject protocol in edit mode in a new window, waits for the editor and inserts the data.
+3. The extension opens the mapped OpenProject protocol in edit mode in a new tab next to T3Monitor, waits for the editor and inserts the data.
 4. Optional: time prompt for past dates (see settings).
 5. Check the summary → **OK** saves the protocol.
 
@@ -117,7 +117,7 @@ Right-click the extension icon → **Alle ausführen**.
 
 | Version | Changes |
 |---|---|
-| 1.4 | OpenProject opens in a new window (T3Monitor tab stays open); CSV export/import of settings |
+| 1.4 | OpenProject opens in a new tab next to T3Monitor (T3Monitor tab stays open); CSV export/import of settings |
 | 1.3 | "Keine Updates gefunden" row (with consent) when there is nothing new; "Alle ausführen" with progress page; UID field accepts the full T3Monitor link |
 | 1.2 | "Who is executing?" prompt, even name distribution, README |
 | 1.1 | One-click workflow, settings page, mapping, multiple names, fix for `chrome://` error |

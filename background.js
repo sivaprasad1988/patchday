@@ -45,9 +45,8 @@ chrome.action.onClicked.addListener(async (tab) => {
   const names = who.split(',').map(x => x.trim()).filter(Boolean);
   if (names.length) cfg.names = names;
   const url = opEditUrl(op);
-  // OpenProject in neuem Fenster öffnen; Daten vor dem Laden ablegen, damit der Auto-Start sie sicher findet
-  const win = await chrome.windows.create({ url: 'about:blank', focused: true });
-  const nt = win.tabs[0].id;
+  // OpenProject in neuem Tab direkt neben T3Monitor öffnen; Daten vor dem Laden ablegen, damit der Auto-Start sie sicher findet
+  const nt = (await chrome.tabs.create({ url: 'about:blank', windowId: tab.windowId, index: tab.index + 1, openerTabId: tab.id, active: true })).id;
   await SS.set({ [PK(nt)]: { data: d, cfg: { names: cfg.names, askTime: cfg.askTime }, url, ts: Date.now() } });
   chrome.tabs.update(nt, { url });
 });
